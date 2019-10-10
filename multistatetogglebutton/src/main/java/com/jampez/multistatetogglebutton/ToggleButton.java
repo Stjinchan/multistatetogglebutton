@@ -1,25 +1,24 @@
 package com.jampez.multistatetogglebutton;
 
 import android.content.Context;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
-import androidx.core.content.ContextCompat;
+public abstract class ToggleButton extends LinearLayout {
 
-@SuppressWarnings("unused")
-public class ToggleButton extends LinearLayout {
     public interface OnValueChangedListener {
+        // TODO: Add this callback:
         // public void onValueChanged(int value, boolean selected);
-        void onValueChanged(int value);
+        public void onValueChanged(int value);
     }
 
     OnValueChangedListener listener;
     Context context;
-    @ColorInt
-    int colorPressed, colorNotPressed, borderColor; // Resolved colors (format 0xAARRGGBB)
+    @ColorInt int colorPressed, colorNotPressed; // Resolved colors (format 0xAARRGGBB)
     int colorPressedText, colorPressedBackground;
     int colorNotPressedText, colorNotPressedBackground;
     int pressedBackgroundResource, notPressedBackgroundResource;
@@ -39,8 +38,9 @@ public class ToggleButton extends LinearLayout {
     }
 
     public void setValue(int value) {
-        if (this.listener != null)
+        if (this.listener != null) {
             listener.onValueChanged(value);
+        }
     }
 
 
@@ -50,8 +50,8 @@ public class ToggleButton extends LinearLayout {
      * @param colorPressed    color resource ID for the pressed button(s)
      * @param colorNotPressed color resource ID for the released button(s)
      */
-    public void setColorRes(@ColorRes int colorPressed, @ColorRes int colorNotPressed, @ColorRes int borerColor) {
-        setColors(ContextCompat.getColor(context, colorPressed), ContextCompat.getColor(context, colorNotPressed), ContextCompat.getColor(context, borerColor));
+    public void setColorRes(@ColorRes int colorPressed, @ColorRes int colorNotPressed) {
+        setColors(ContextCompat.getColor(context, colorPressed), ContextCompat.getColor(context, colorNotPressed));
     }
 
     /**
@@ -59,12 +59,10 @@ public class ToggleButton extends LinearLayout {
      *
      * @param colorPressed    resolved color for the pressed button(s)
      * @param colorNotPressed resolved color for the released button(s)
-     * @param borderColor resolved color for the released button(s)
      */
-    public void setColors(@ColorInt int colorPressed, @ColorInt int colorNotPressed, @ColorInt int borderColor) {
+    public void setColors(@ColorInt int colorPressed, @ColorInt int colorNotPressed) {
         this.colorPressed = colorPressed;
         this.colorNotPressed = colorNotPressed;
-        this.borderColor = borderColor;
     }
 
     /**
@@ -133,6 +131,8 @@ public class ToggleButton extends LinearLayout {
     /**
      * Color values are in the form 0xAARRGGBB
      *
+     * @param colorNotPressedText  resolved color for the pressed button's text
+     * @param colorNotPressedText  resolved color for the released button's text
      */
     public void setForegroundColors(int colorPressedText, int colorNotPressedText) {
         this.colorPressedText = colorPressedText;
