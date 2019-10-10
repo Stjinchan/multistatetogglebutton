@@ -19,6 +19,7 @@ import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import android.graphics.Color;
 
 @SuppressWarnings("unused")
 public class MultiStateToggleButton extends ToggleButton {
