@@ -238,7 +238,7 @@ public class MultiStateToggleButton extends ToggleButton {
             b.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-
+                    Log.d(TAG, "focusedddd");
                     b.setBackgroundColor(colorPressedText);
                 }
             });
