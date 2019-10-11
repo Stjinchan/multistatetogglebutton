@@ -235,6 +235,12 @@ public class MultiStateToggleButton extends ToggleButton {
             if (enableDefaultSelection) {
                 setButtonState(b, selected[i]);
             }
+            b.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    b.setBackgroundColor(0xFFFF0000);
+                }
+            });
             this.buttons.add(b);
         }
         mainLayout.setBackgroundResource(R.drawable.button_section_shape);
