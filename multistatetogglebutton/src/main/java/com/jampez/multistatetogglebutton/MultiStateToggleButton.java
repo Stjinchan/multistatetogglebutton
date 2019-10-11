@@ -235,13 +235,6 @@ public class MultiStateToggleButton extends ToggleButton {
             if (enableDefaultSelection) {
                 setButtonState(b, selected[i]);
             }
-            b.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    Log.d(TAG, "focusedddd");
-                    b.setBackgroundColor(colorPressedText);
-                }
-            });
             this.buttons.add(b);
         }
         mainLayout.setBackgroundResource(R.drawable.button_section_shape);
@@ -319,7 +312,7 @@ public class MultiStateToggleButton extends ToggleButton {
                 ((AppCompatButton) button).setTextColor(selected ? colorPressedText : colorNotPressedText);
             }
             if (pressedBackgroundResource != 0 || notPressedBackgroundResource != 0) {
-                button.setBackgroundResource(selected ? pressedBackgroundResource : notPressedBackgroundResource);
+                button.setBackgroundResource(selected ? R.drawable.button_pressed : R.drawable.button_not_pressed);
             }
         }
     }
