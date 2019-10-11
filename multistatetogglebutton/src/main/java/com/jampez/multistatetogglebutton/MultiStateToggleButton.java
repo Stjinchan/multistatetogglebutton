@@ -221,7 +221,7 @@ public class MultiStateToggleButton extends ToggleButton {
 
         this.buttons = new ArrayList<>();
         for (int i = 0; i < elementCount; i++) {
-            View b = buttons[i];
+            final View b = buttons[i];
             final int position = i;
             b.setOnClickListener(new View.OnClickListener() {
 
